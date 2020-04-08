@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section id="movie-home" class="pt-5">
+    <div class="container">
+   <h3 class="pb-3 mt-4 font-italic border-bottom">
+      People
+   </h3>
+  
+  <div class="row">
+        {%  for person in people_list %}
+      {% if person.profile_path %}
+      <div class="col-md-6">
+         <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+               <strong class="d-inline-block mb-2 text-primary">{{person.name}}</strong>
+               <h6 class="mb-0">
+                  <a class="text-dark" href="#"></a>
+               </h6>
+               <div class="mb-1 text-muted small">Known For Movies</div>
+               {% for movie in person.movies %}
+               <p class="card-text mb-auto">{{movie.title}}</p>
+               {% endfor %}
+               <a class="btn btn-outline-primary btn-sm" role="button" href="https://www.imdb.com/name/{{ person.imdb_id }}">Imdb Profile</a>
+            </div>
+            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="https://image.tmdb.org/t/p/w185{{ person.profile_path }}" style="width: 200px; height: 250px;">
+         </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+  </div>
+
+  </section>
+
+
+{% endblock content %}

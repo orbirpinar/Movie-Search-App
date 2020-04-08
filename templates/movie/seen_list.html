@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="border-bottom">Seen List</h1>
+
+<section id="watch-list">
+	<div class="container-fluid ">
+		<div class="row">
+			{% for movie in seen_list %}
+		
+			<div class="col-md-3 pl-2 mt-4">
+				<div class="imageContainer mb-2">
+ 					<img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="Card image cap">
+ 					<div class="removeList">
+ 						
+ 					</div>
+ 					<div class="imageOverlay">
+ 						<div class="imageText">
+ 							
+ 							<h3>{{ movie.title }}</h3>
+ 							<i class="fas fa-star"></i>
+ 							<p> {{ movie.vote_average }}/10</p>
+ 							<p>remove from list</p>
+ 							<a href="{% url 'update_to_watch' movie.id  %}"><i class="fas fa-trash-alt"></i></a>
+ 						</div>		
+ 					</div>
+			</div>
+			</div>
+		
+			{% endfor %}
+		</div>
+	</div>
+
+
+</section>
+
+{% endblock content %}
